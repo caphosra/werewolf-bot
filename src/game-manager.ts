@@ -74,7 +74,7 @@ export function call_close_game(msg: Discord.Message, args: string) {
         return;
     }
 
-    call_close_game(msg, args);
+    close_game(msg.channel.id);
 
     msg.reply("ゲームは終了です。お疲れ様でした!");
 }
