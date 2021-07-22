@@ -29,8 +29,10 @@ function add_role(channel_id: string, role: Table.Role, values: number) {
 }
 
 export function is_game_started(msg: Discord.Message, showMessage: boolean = true): boolean {
-    if (!tables[msg.channel.id] && showMessage) {
-        msg.reply("まだこの卓ではゲームは始まっていません!");
+    if (!tables[msg.channel.id]) {
+        if (showMessage) {
+            msg.reply("まだこの卓ではゲームは始まっていません!");
+        }
         return false;
     }
     else {
