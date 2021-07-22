@@ -88,7 +88,7 @@ export function call_add_role(msg: Discord.Message, args: string) {
     const matched_arg = args.match(arg_regex);
 
     if (!matched_arg) {
-        msg.reply("すみません。よくわかりません。")
+        msg.reply(`\"${args}\"を理解できません。`)
         return;
     }
 
@@ -120,7 +120,7 @@ export function call_jobs(msg: Discord.Message, args: string) {
     let message = "現在の役職の状況は、"
     for (const roleName in Table.roleNumbers) {
         const role = Table.roleNumbers[roleName];
-        message += `\n- ${roleName}が${tables[msg.channel.id].roles[role]}人`;
+        message += `\n- ${roleName}が${tables[msg.channel.id].roles[role] ?? 0}人`;
     }
     message += "です。";
 
