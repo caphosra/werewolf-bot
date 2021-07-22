@@ -1,5 +1,5 @@
 import * as Discord from "discord.js";
-import { call_add_role, call_close_game, call_jobs, call_start_game } from "./game-manager";
+import { call_add_role, call_close_game, call_jobs, call_join, call_start_game } from "./game-manager";
 
 //
 // Start the bot.
@@ -57,6 +57,6 @@ function parse_args(msg: Discord.Message) {
     }
 
     if (param_name == "wolf-join") {
-        call_jobs(msg, args);
+        call_join(msg, args);
     }
 }

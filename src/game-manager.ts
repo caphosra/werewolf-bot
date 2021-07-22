@@ -84,11 +84,11 @@ export function call_add_role(msg: Discord.Message, args: string) {
         return;
     }
 
-    const arg_regex = /([\s]+)\s+([\s]+)/;
+    const arg_regex = /(.+)\s+(.+)/;
     const matched_arg = args.match(arg_regex);
 
     if (!matched_arg) {
-        msg.reply(`\"${args}\"を理解できません。`)
+        msg.reply("すみません。よくわかりません。");
         return;
     }
 
@@ -101,7 +101,6 @@ export function call_add_role(msg: Discord.Message, args: string) {
         for (const roleName in Table.roleNumbers) {
             message += `\n- \"${roleName}\"`;
         }
-        message += "です。";
         msg.reply(message);
     }
 
