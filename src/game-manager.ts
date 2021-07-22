@@ -101,7 +101,9 @@ export function call_add_role(msg: Discord.Message, args: string) {
         for (const roleName in Table.roleNumbers) {
             message += `\n- \"${roleName}\"`;
         }
+        message += "\nです。"
         msg.reply(message);
+        return;
     }
 
     const role_value = Number(matched_arg[2]);
@@ -121,7 +123,7 @@ export function call_jobs(msg: Discord.Message, args: string) {
         const role = Table.roleNumbers[roleName];
         message += `\n- ${roleName}が${tables[msg.channel.id].roles[role] ?? 0}人`;
     }
-    message += "です。";
+    message += "\nです。";
 
     msg.reply(message);
 }
@@ -131,7 +133,7 @@ export function call_join(msg: Discord.Message, args: string) {
         return;
     }
 
-    if (tables[msg.channel.id].players.filter((player) => msg.author.id == player.id)){
+    if (tables[msg.channel.id].players.filter((player) => msg.author.id == player.id).length ){
         msg.reply("もう既に登録しています。");
         return;
     }
