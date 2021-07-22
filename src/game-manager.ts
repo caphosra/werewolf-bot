@@ -28,7 +28,7 @@ function add_role(channel_id: string, role: Table.Role, values: number) {
     tables[channel_id].roles[role] = values;
 }
 
-export function is_game_started(msg: Discord.Message, showMessage: boolean = true): boolean {
+export function is_game_started(msg: Discord.Message, showMessage: boolean): boolean {
     if (!tables[msg.channel.id]) {
         if (showMessage) {
             msg.reply("まだこの卓ではゲームは始まっていません!");
@@ -70,7 +70,7 @@ export function call_start_game(msg: Discord.Message, args: string) {
 }
 
 export function call_close_game(msg: Discord.Message, args: string) {
-    if (!is_game_started(msg)) {
+    if (!is_game_started(msg, true)) {
         return;
     }
 
@@ -80,7 +80,7 @@ export function call_close_game(msg: Discord.Message, args: string) {
 }
 
 export function call_add_role(msg: Discord.Message, args: string) {
-    if (!is_game_started(msg)) {
+    if (!is_game_started(msg, true)) {
         return;
     }
 
@@ -112,7 +112,7 @@ export function call_add_role(msg: Discord.Message, args: string) {
 }
 
 export function call_jobs(msg: Discord.Message, args: string) {
-    if (!is_game_started(msg)) {
+    if (!is_game_started(msg, true)) {
         return;
     }
 
@@ -127,7 +127,7 @@ export function call_jobs(msg: Discord.Message, args: string) {
 }
 
 export function call_join(msg: Discord.Message, args: string) {
-    if (!is_game_started(msg)) {
+    if (!is_game_started(msg, true)) {
         return;
     }
 
