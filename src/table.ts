@@ -31,16 +31,25 @@ export class Player {
     role: Role = Role.VILLAGER;
     death: boolean = false;
     done: boolean = true;
+    voteTo: number | null = null;
+    protect: boolean = false;
 
     isWereWolf(): boolean {
         return this.role == Role.WEREWOLF;
     }
 }
 
+export enum TableState {
+    START,
+    DAYTIME,
+    NIGHT
+}
+
 export class Table {
     channel_id: string = "";
-    turn: number = 0;
+    turn: number = 1;
     roles: { [role: number]: number } = { };
     players: Player[] = [];
+    state: TableState = TableState.START;
     timeout: NodeJS.Timeout | null = null;
 }
