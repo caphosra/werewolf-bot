@@ -182,7 +182,7 @@ async function call_ready(msg: Discord.Message, args: string) {
 }
 
 function parse_args(msg: Discord.Message) {
-    const arg_regex = /^w\/([^#\s]+)\s+(.+)?/;
+    const arg_regex = /^w\/([^#\s]+)(\s+(.+))?/;
     const matched_arg = msg.content.match(arg_regex);
 
     if (!matched_arg) {
@@ -190,7 +190,7 @@ function parse_args(msg: Discord.Message) {
     }
 
     const param_name = matched_arg[1];
-    const args = matched_arg[2];
+    const args = matched_arg[3];
 
     if (param_name == "start") {
         call_start(msg, args);
